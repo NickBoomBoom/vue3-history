@@ -1,16 +1,21 @@
 {
   "name": "vue3-history",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "push": "pnpm run build && pnpm publish dist --no-git-checks",
     "build": "tsc -P tsconfig.json && ts-node build.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NickBoomBoom/vue3-history"
+  },
+  "author": "q.chen <q.chen.self@outlook.com>",
+  "license": "MIT",
   "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@types/node": "^18.14.0",
     "ts-node": "^10.9.1",
