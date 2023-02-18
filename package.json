@@ -1,0 +1,21 @@
+{
+  "name": "vue3-history",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "push": "pnpm run build && cp package.json README.md ./dist && pnpm publish dist --no-git-checks",
+    "build": "tsc -P tsconfig.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  },
+  "optionalDependencies": {
+    "@vue/runtime-core": "^3.2.47",
+    "vue": "^3.2.47"
+  }
+}
