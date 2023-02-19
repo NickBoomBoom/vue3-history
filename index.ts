@@ -1,5 +1,12 @@
 import type { Vue3HistoryOption, History } from "./interface"
-import { reactive } from 'vue'
+import { Router } from 'vue-router'
+import { reactive , ComponentCustomProperties} from 'vue'
+declare module "@vue/runtime-core" {
+  interface ComponentCustomProperties {
+    $history: History; // 这里填类型
+  }
+} 
+
 export default {
   install: (app: any, { router, onRouteChange, onQuit, debug }: Vue3HistoryOption) => {
     const log = function (...args: any) {
@@ -36,9 +43,9 @@ export default {
     history.current += 1
     app.config.globalProperties.$history = history
     router.push = new Proxy(router.push, {
-      apply(target, obj, args) {
+      apply(target: any, obj: Router, args: any) {
         return (Reflect.apply(target, obj, args) as Promise<any>).then((err: Error) => {
-          log('push ===> ', obj, args,)
+          log('push ===> ', target, obj, args,)
           if (err) {
             return console.error(err)
           }
@@ -50,7 +57,7 @@ export default {
     })
     // replace
     router.replace = new Proxy(router.replace, {
-      apply(target, obj, args) {
+      apply(target: any, obj: Router, args: any) {
         return (Reflect.apply(target, obj, args) as Promise<any>).then((err: any) => {
           log('replace ===> ', obj, args,)
           if (err) {

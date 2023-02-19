@@ -1,5 +1,5 @@
 {
-  "include": ["env.d.ts", "index.ts"],
+  "include": [ "index.ts"],
   "compilerOptions": {
     "baseUrl": ".", 
     "target": "ES6",
@@ -11,6 +11,6 @@
     "types": [
       "node"
     ],
-    "typeRoots": ["env.d.ts", "node_modules/@types"]
+    "typeRoots": ["node_modules/@types"]
   },
 }

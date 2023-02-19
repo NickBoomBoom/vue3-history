@@ -1,6 +1,6 @@
 {
   "name": "vue3-history",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "index.js",
   "types": "index.d.ts",
@@ -23,6 +23,7 @@
   },
   "optionalDependencies": {
     "@vue/runtime-core": "^3.2.47",
-    "vue": "^3.2.47"
+    "vue": "^3.2.47",
+    "vue-router": "^4.1.6"
   }
 }
