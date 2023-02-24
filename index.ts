@@ -53,7 +53,7 @@ export default {
           const nextCurrent = history.current + 1
           const stackLength = history.stack.length
           const nextRoute = history.stack[nextCurrent]
-          if (nextRoute.name !== currentRoute.name) {
+          if (nextRoute.name !== currentRoute.value.name) {
             history.stack.splice(nextCurrent, stackLength - nextCurrent)
           }
           history.stack.push(currentRoute.value)
