@@ -1,11 +1,11 @@
 import type { Vue3HistoryOption, History } from "./interface"
 import { Router } from 'vue-router'
-import { reactive , ComponentCustomProperties} from 'vue'
+import { reactive, ComponentCustomProperties } from 'vue'
 declare module "@vue/runtime-core" {
   interface ComponentCustomProperties {
     $history: History; // 这里填类型
   }
-} 
+}
 
 export default {
   install: (app: any, { router, onRouteChange, onQuit, debug }: Vue3HistoryOption) => {
@@ -50,6 +50,12 @@ export default {
             return console.error(err)
           }
           const { currentRoute } = obj
+          const nextCurrent = history.current + 1
+          const stackLength = history.stack.length
+          const nextRoute = history.stack[nextCurrent]
+          if (nextRoute.name !== currentRoute.name) {
+            history.stack.splice(nextCurrent, stackLength - nextCurrent)
+          }
           history.stack.push(currentRoute.value)
           history.current += 1
         })
