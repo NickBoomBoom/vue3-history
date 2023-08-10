@@ -23,21 +23,24 @@ pnpm add vue3-history
 ```javascript
 // main.ts 
 import { createApp } from "vue";
-import Vue3History from "vue3-history";
+import App from "./App.vue";
 import router from "./router";
+import { createHistory } from "vue3-history";
 
-const app = createApp(App);
-
-app.use(router).use(Vue3History,{
-  router, 
-  debug: true, 
+// core 
+const Vue3History = createHistory({
+  router,
+  debug: true,
   onRouteChange: (v: any) => {
     console.log("onRouteChange", v);
   },
   onQuit() {
-    console.log("quit");
+    alert('已经到第一页了')
   },
 })
+
+createApp(App).use(router).use(Vue3History).mount("#app");
+
 
 ```
 
